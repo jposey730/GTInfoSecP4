@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="http://cs6035.gtisc.gatech.edu:5000/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+ 
+<body>
+    <div id="server-output">
+    </div>
+    <script src="http://cs6035.gtisc.gatech.edu:5000/js/contentloader.js"></script>
+ 
+    <script>
+        function getStudentAnswers(imageHandler) {
+            // ------------------- DO not change any code above here -------------------------
+            // TODO: write JavaScript here to fetch values from the DOM.
+            // Hint: Use the browser developer tools to find out how to get these values
+            // DO not hard code these values. They WILL be different when we grade
+            // DO not modify any other code.
+ 
+ 
+            // 1) - Get the value of the username text input
+            var username = document.getElementsByName("username")[0].value;
+            //console.log('username = ' + username);
+            // 2) - Determine if the survived checkbox is checked and set the Boolean value
+            //console.log("checked = " + document.getElementById("survived").checked);
+            var survived = document.getElementById("survived").checked;
+ 
+            // 3) - Find a submit button on the page and create an event handler to trigger when the button is clicked
+            // When clicked set the value of the hidden input near the button to 42
+            // You'll see this message on the page when successful, see screenshot -> Button Click Event: Successful!
+            var submitButton = document.getElementById("submit-form-btn");
+
+            submitButton.onclick = function(){
+                var setVal = document.getElementById("submit-form-hidden").value = "42";
+                //console.log(document.getElementById("submit-form-hidden").value);
+            };
+
+
+            // 4) - Create a new img DOM object, wire-up the 'onload' event and set the handler to the passed in imageHandler parameter of this function.
+             
+
+            // Lastly, Set the source of the image to http://cs6035.gtisc.gatech.edu:5000/gt-logo.png
+            // You'll see the image as well as this message on the page when successful -> GA Tech Imaged Loaded: Successful!
+            var createdImg = new Image();
+            createdImg.onload = imageHandler;
+            createdImg.src = 'http://cs6035.gtisc.gatech.edu:5000/gt-logo.png';
+ 
+ 
+ 
+            // ------------------- DO not change any code below here -------------------------
+            return {
+                username,
+                survived,
+                createdImg
+            };
+        }
+    </script>
+</body>
+ 
+</html>

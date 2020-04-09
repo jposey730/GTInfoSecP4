@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Submitting a Form</title>
+  </head>
+  <body>
+    <form id = "gtForm" action="http://cs6035.gtisc.gatech.edu:5000/forms?IsHoneyPot=false" method = "post">
+ 		GATechID: <input type="text" name = "GATechID"><br>
+  		MagicNumber: <input type="number" name = "MagicNumber"><br><br>
+			<input type = "text" value = "CS-6035" name = "hiddenpassword"><br><br>
+  		<input type="button" onclick="submitFunction()" value="Submit">
+    </form>
+    <script>
+
+    	function submitFunction(){
+    		document.getElementById("gtForm").submit();
+    	}
+    </script>
+  </body>
+</html>
